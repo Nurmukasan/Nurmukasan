@@ -7,7 +7,7 @@ Built in Practice #09 with an AI agent. No login, no database – bookings are h
 
 ```bash
 npm install
-npm start
+npm run dev
 ```
 
 ## Test
@@ -20,3 +20,13 @@ npm test
 
 - 30–120 minutes per booking, room open 08:00–20:00
 - No past times, no overlaps, no blocked periods
+
+## Checks
+
+```bash
+npm test          # unit tests
+npx tsc --noEmit  # type check
+npm run build     # type check + production build
+```
+
+Agent rules: see [AGENTS.md](AGENTS.md). Practice #10 risk review: see [docs/practice-10/REPORT.md](docs/practice-10/REPORT.md).
