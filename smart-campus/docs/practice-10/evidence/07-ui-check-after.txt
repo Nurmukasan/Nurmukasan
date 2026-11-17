@@ -1,0 +1,18 @@
+# Manual/automated UI check (Playwright Chromium, TZ Asia/Almaty, clock frozen at 2026-11-17 09:00)
+# build: 9c9d02c (after M1+M2)
+[desktop] available: 2026-11-18 11:00-12:00 -> Available for “Study session”The room is available for this time.
+[desktop] conflict-partial: 2026-11-18 09:30-10:00 -> Not availableOverlaps with an existing booking (09:00–10:30).
+[desktop] conflict-enclosing-F1: 2026-11-18 12:30-14:30 -> Not availableOverlaps with an existing booking (13:00–14:00).
+[desktop] blocked: 2026-11-19 12:30-13:30 -> Not availableRoom is blocked: Projector maintenance.
+[desktop] past-earlier-today-F2: 2026-11-17 08:00-08:45 -> Not availableYou cannot book a time in the past.
+[desktop] too-long: 2026-11-20 08:00-12:00 -> Not availableBooking must be between 30 and 120 minutes.
+[desktop] F5 injection: <img> elements rendered in result = 1, document.title = "INJECTED"
+[desktop] horizontal overflow: false
+[mobile] available: 2026-11-18 11:00-12:00 -> Available for “Study session”The room is available for this time.
+[mobile] conflict-partial: 2026-11-18 09:30-10:00 -> Not availableOverlaps with an existing booking (09:00–10:30).
+[mobile] conflict-enclosing-F1: 2026-11-18 12:30-14:30 -> Not availableOverlaps with an existing booking (13:00–14:00).
+[mobile] blocked: 2026-11-19 12:30-13:30 -> Not availableRoom is blocked: Projector maintenance.
+[mobile] past-earlier-today-F2: 2026-11-17 08:00-08:45 -> Not availableYou cannot book a time in the past.
+[mobile] too-long: 2026-11-20 08:00-12:00 -> Not availableBooking must be between 30 and 120 minutes.
+[mobile] F5 injection: <img> elements rendered in result = 1, document.title = "INJECTED"
+[mobile] horizontal overflow: false

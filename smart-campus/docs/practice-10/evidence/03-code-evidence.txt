@@ -1,0 +1,14 @@
+$ npm audit --omit=dev
+found 0 vulnerabilities
+# exit code: 0
+
+$ grep -rnE "localStorage|sessionStorage|indexedDB|fetch\(|XMLHttpRequest" src
+# exit code: 1 (1 = no matches)
+
+$ grep -rn "innerHTML" src
+src/main.ts:7:app.innerHTML = `
+src/main.ts:49:  dayList.innerHTML = items.length ? items.join('') : '<li class="empty">No bookings.</li>';
+src/main.ts:63:  result.innerHTML = `<strong>${res.available ? 'Available' : 'Not available'}</strong>${purpose}<br />${res.message}`;
+
+$ grep -rnE "\.sort\(|\.splice\(|\.push\(|delete " src/availability.ts
+# exit code: 1 (1 = no matches)
