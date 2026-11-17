@@ -7,8 +7,8 @@ Please find my Practice work #10 (risk review of the Smart Campus Room Availabil
 
 - Class: Tuesday, 16:00–19:00
 - AI tool: Claude Code 2.1.326 (claude.ai/code, cloud session), model Claude Opus 5.5 (claude-opus-5-5)
-- Live demo: <LIVE DEMO LINK>
-- Project source (export): https://github.com/nurmukasan/nurmukasan/tree/claude/adoring-ritchie-yobpom/smart-campus
+- Live demo: https://nurmukasan.github.io/nurmukasan/ (GitHub Pages)
+- Project source (export): https://github.com/nurmukasan/nurmukasan
 - Report: Practice10_Report_Markabaev_25B030216.pdf (risk register, agent-readiness audit, AGENTS.md review, two mitigations with test evidence, release decision: CONDITIONAL GO)
 - Screenshots: attached (01–13)
 

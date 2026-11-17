@@ -4,7 +4,7 @@
 **Student:** Markabaev Nurmukasan (Маркабаев Нурмукасан) · **ID:** 25B030216 · **Class:** Tuesday, 16:00–19:00
 **AI tool:** Claude Code 2.1.326 (cloud session, claude.ai/code) · **Model:** Claude Opus 5.5 (`claude-opus-5-5`)
 **Date:** 2026-11-17
-**Project:** `smart-campus/` (Vite 6 + TypeScript 5.9 + Vitest 3, no framework, no backend)
+**Project:** repository root (Vite 6 + TypeScript 5.9 + Vitest 3, no framework, no backend)
 
 > Note: the Practice #09 project was not in this repository, so it was rebuilt to the Practice #09 spec
 > (one fictional room, fictional bookings, no login/DB, acceptance contract AC1–AC6) and saved as the
@@ -228,6 +228,10 @@ Prompt used:
 - **Which missing check most weakens agent readiness?** The missing CI/automated gate. Without it, an agent's "tests pass" claim cannot be checked automatically. Wrong commands in AGENTS.md were a close second.
 - **Would I allow a background agent to auto-merge?** No. The agent should do the work on a branch with evidence, and a human should approve the merge, at least until Level 3 (CI + hooks) is in place.
 - **What evidence would change the decision?** A green CI run including E2E and lint, and an R5 fix with a test, would move it to GO. A failing AC test or an exploitable R5 would move it to NO-GO.
+
+## Post-review update (after submission prep)
+
+The project was moved to the repository root and a GitHub Actions workflow (`.github/workflows/pages.yml`) was added. It runs `npm ci`, `npm test`, `tsc --noEmit` and `npm run build` on every push to `main`, then deploys to GitHub Pages: **https://nurmukasan.github.io/nurmukasan/**. This partly addresses R9 (CI now exists; a linter and hooks are still missing). The audit table above describes the state at review time.
 
 ## Commit trail
 
