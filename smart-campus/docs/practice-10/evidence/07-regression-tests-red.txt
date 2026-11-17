@@ -1,0 +1,157 @@
+$ TZ=Asia/Almaty npm test   # new regression tests BEFORE the fix
+
+> smart-campus-room-checker@0.9.0 test
+> vitest run
+
+
+ RUN  v3.2.7 /home/user/Nurmukasan/smart-campus
+
+ ❯ tests/availability.test.ts (13 tests | 5 failed) 22ms
+   ✓ checkAvailability > accepts a free slot 2ms
+   ✓ checkAvailability > rejects end before start 0ms
+   ✓ checkAvailability > rejects a booking that is too long 0ms
+   ✓ checkAvailability > rejects overlap with an existing booking 0ms
+   ✓ checkAvailability > rejects a blocked room 0ms
+   ✓ checkAvailability > does not change stored bookings 0ms
+   × regression: overlap (R1, AC3) > rejects a request that ends inside an existing booking 11ms
+     → expected { available: true, …(1) } to match object { Object (available, reason) }
+(1 matching property omitted from actual)
+   × regression: overlap (R1, AC3) > rejects a request that encloses an existing booking 2ms
+     → expected { available: true, …(1) } to match object { Object (available, reason) }
+(1 matching property omitted from actual)
+   ✓ regression: overlap (R1, AC3) > allows a back-to-back booking 1ms
+   × regression: past times (R2, AC1) > rejects a slot earlier today 1ms
+     → expected { available: true, …(1) } to match object { available: false, reason: 'past' }
+(1 matching property omitted from actual)
+   × regression: past times (R2, AC1) > rejects a slot that already started 1ms
+     → expected { available: true, …(1) } to match object { available: false, reason: 'past' }
+(1 matching property omitted from actual)
+   × regression: past times (R2, AC1) > rejects yesterday shortly after local midnight 1ms
+     → expected { available: true, …(1) } to match object { available: false, reason: 'past' }
+(1 matching property omitted from actual)
+   ✓ regression: past times (R2, AC1) > accepts later today 0ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 5 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/availability.test.ts > regression: overlap (R1, AC3) > rejects a request that ends inside an existing booking
+AssertionError: expected { available: true, …(1) } to match object { Object (available, reason) }
+(1 matching property omitted from actual)
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[2m  {[22m
+[32m-   "available": false,[39m
+[32m-   "reason": "conflict",[39m
+[31m+   "available": true,[39m
+[2m  }[22m
+
+ ❯ tests/availability.test.ts:39:81
+     37| describe('regression: overlap (R1, AC3)', () => {
+     38|   it('rejects a request that ends inside an existing booking', () => {
+     39|     expect(check({ date: '2026-11-18', startTime: '08:30', endTime: '0…
+       |                                                                                 ^
+     40|   });
+     41| 
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/5]⎯
+
+ FAIL  tests/availability.test.ts > regression: overlap (R1, AC3) > rejects a request that encloses an existing booking
+AssertionError: expected { available: true, …(1) } to match object { Object (available, reason) }
+(1 matching property omitted from actual)
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[2m  {[22m
+[32m-   "available": false,[39m
+[32m-   "reason": "conflict",[39m
+[31m+   "available": true,[39m
+[2m  }[22m
+
+ ❯ tests/availability.test.ts:43:81
+     41| 
+     42|   it('rejects a request that encloses an existing booking', () => {
+     43|     expect(check({ date: '2026-11-18', startTime: '12:30', endTime: '1…
+       |                                                                                 ^
+     44|   });
+     45| 
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/5]⎯
+
+ FAIL  tests/availability.test.ts > regression: past times (R2, AC1) > rejects a slot earlier today
+AssertionError: expected { available: true, …(1) } to match object { available: false, reason: 'past' }
+(1 matching property omitted from actual)
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[2m  {[22m
+[32m-   "available": false,[39m
+[32m-   "reason": "past",[39m
+[31m+   "available": true,[39m
+[2m  }[22m
+
+ ❯ tests/availability.test.ts:53:111
+     51| describe('regression: past times (R2, AC1)', () => {
+     52|   it('rejects a slot earlier today', () => {
+     53|     expect(check({ date: '2026-11-21', startTime: '09:00', endTime: '1…
+       |                                                                                                               ^
+     54|   });
+     55| 
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/5]⎯
+
+ FAIL  tests/availability.test.ts > regression: past times (R2, AC1) > rejects a slot that already started
+AssertionError: expected { available: true, …(1) } to match object { available: false, reason: 'past' }
+(1 matching property omitted from actual)
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[2m  {[22m
+[32m-   "available": false,[39m
+[32m-   "reason": "past",[39m
+[31m+   "available": true,[39m
+[2m  }[22m
+
+ ❯ tests/availability.test.ts:57:111
+     55| 
+     56|   it('rejects a slot that already started', () => {
+     57|     expect(check({ date: '2026-11-21', startTime: '14:30', endTime: '1…
+       |                                                                                                               ^
+     58|   });
+     59| 
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/5]⎯
+
+ FAIL  tests/availability.test.ts > regression: past times (R2, AC1) > rejects yesterday shortly after local midnight
+AssertionError: expected { available: true, …(1) } to match object { available: false, reason: 'past' }
+(1 matching property omitted from actual)
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[2m  {[22m
+[32m-   "available": false,[39m
+[32m-   "reason": "past",[39m
+[31m+   "available": true,[39m
+[2m  }[22m
+
+ ❯ tests/availability.test.ts:61:111
+     59| 
+     60|   it('rejects yesterday shortly after local midnight', () => {
+     61|     expect(check({ date: '2026-11-21', startTime: '10:00', endTime: '1…
+       |                                                                                                               ^
+     62|   });
+     63| 
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/5]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  5 failed | 8 passed (13)
+   Start at  15:38:00
+   Duration  267ms (transform 41ms, setup 0ms, collect 41ms, tests 22ms, environment 0ms, prepare 48ms)
+
+# exit code: 1

@@ -84,7 +84,7 @@ export function checkAvailability(
   for (const b of bookings) {
     const bStart = new Date(b.start);
     const bEnd = new Date(b.end);
-    if (start >= bStart && start < bEnd) {
+    if (start < bEnd && end > bStart) {
       return {
         available: false,
         reason: 'conflict',
