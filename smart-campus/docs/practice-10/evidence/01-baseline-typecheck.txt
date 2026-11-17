@@ -1,0 +1,8 @@
+$ npm run typecheck
+# date: 2026-11-17T10:36:19Z
+npm error Missing script: "typecheck"
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /root/.npm/_logs/2026-11-17T10_36_19_838Z-debug-0.log
+# exit code: 1
