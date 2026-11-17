@@ -1,7 +1,7 @@
 # Practice #10 – Risk Review of the Smart Campus Room Availability Checker
 
 **Course:** AI-Driven Software Engineering (KBTU) · Lesson #10 Practice
-**Student:** _<full name>_ · **ID:** _<student ID>_ · **Class:** _<day of week, time>_
+**Student:** Markabaev Nurmukasan (Маркабаев Нурмукасан) · **ID:** 25B030216 · **Class:** Tuesday, 16:00–19:00
 **AI tool:** Claude Code 2.1.326 (cloud session, claude.ai/code) · **Model:** Claude Opus 5.5 (`claude-opus-5-5`)
 **Date:** 2026-11-17
 **Project:** `smart-campus/` (Vite 6 + TypeScript 5.9 + Vitest 3, no framework, no backend)
