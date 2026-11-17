@@ -1,0 +1,16 @@
+$ TZ=Asia/Almaty npm test   # after M1 + M2
+
+> smart-campus-room-checker@0.9.0 test
+> vitest run
+
+
+ RUN  v3.2.7 /home/user/Nurmukasan/smart-campus
+
+ ✓ tests/availability.test.ts (13 tests) 9ms
+
+ Test Files  1 passed (1)
+      Tests  13 passed (13)
+   Start at  15:38:17
+   Duration  231ms (transform 42ms, setup 0ms, collect 42ms, tests 9ms, environment 0ms, prepare 43ms)
+
+# exit code: 0

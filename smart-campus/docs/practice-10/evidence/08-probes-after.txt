@@ -1,0 +1,48 @@
+$ TZ=Asia/Almaty npx vitest run --config docs/practice-10/probes/vitest.probe.config.ts   # same probes, after fixes
+
+ RUN  v3.2.7 /home/user/Nurmukasan/smart-campus
+
+ ❯ docs/practice-10/probes/risk-probes.probe.ts (13 tests | 1 failed) 13ms
+   ✓ F1 overlap (AC3) > rejects a request that ENDS inside an existing booking (08:30–09:30 vs b1 09:00–10:30) 2ms
+   ✓ F1 overlap (AC3) > rejects a request that ENCLOSES an existing booking (12:30–14:30 vs b2 13:00–14:00) 0ms
+   ✓ F1 overlap (AC3) > still allows back-to-back booking (10:30–11:00 right after b1) 0ms
+   ✓ F2 past time today (AC1) > rejects a slot earlier today (now 15:00, request 09:00–10:00 same day) 0ms
+   ✓ F3 "today" computed in UTC (run with TZ=Asia/Almaty) > rejects yesterday when local time is 02:00 (UTC still previous day) 0ms
+   × F4 time-dependent baseline test > baseline "accepts a free slot" case still passes when the clock moves to 2026-12-01 5ms
+     → expected false to be true // Object.is equality
+   ✓ F12 claim: function mutates stored data (AC5) > frozen inputs do not throw and are unchanged 1ms
+   ✓ Boundary rules (F9 missing coverage) – exploratory > exactly 30 min is allowed 0ms
+   ✓ Boundary rules (F9 missing coverage) – exploratory > 29 min is rejected 0ms
+   ✓ Boundary rules (F9 missing coverage) – exploratory > exactly 120 min is allowed 0ms
+   ✓ Boundary rules (F9 missing coverage) – exploratory > ending exactly at closing 20:00 is allowed 0ms
+   ✓ Boundary rules (F9 missing coverage) – exploratory > starting before 08:00 is rejected 0ms
+   ✓ Boundary rules (F9 missing coverage) – exploratory > empty input is rejected as invalid 1ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  docs/practice-10/probes/risk-probes.probe.ts > F4 time-dependent baseline test > baseline "accepts a free slot" case still passes when the clock moves to 2026-12-01
+AssertionError: expected false to be true // Object.is equality
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- true[39m
+[31m+ false[39m
+
+ ❯ docs/practice-10/probes/risk-probes.probe.ts:53:25
+     51|     vi.setSystemTime(new Date('2026-12-01T09:00'));
+     52|     const r = checkAvailability({ date: '2026-11-20', startTime: '10:0…
+     53|     expect(r.available).toBe(true);
+       |                         ^
+     54|   });
+     55| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 12 passed (13)
+   Start at  15:38:21
+   Duration  247ms (transform 50ms, setup 0ms, collect 48ms, tests 13ms, environment 0ms, prepare 47ms)
+
+# exit code: 1

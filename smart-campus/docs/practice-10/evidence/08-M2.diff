@@ -1,0 +1,22 @@
+diff --git a/smart-campus/src/availability.ts b/smart-campus/src/availability.ts
+index cfe55c6..08489d5 100644
+--- a/smart-campus/src/availability.ts
++++ b/smart-campus/src/availability.ts
+@@ -38,6 +38,7 @@ export function checkAvailability(
+   req: CheckRequest,
+   bookings: readonly Booking[],
+   blocks: readonly Block[],
++  now: Date = new Date(),
+ ): CheckResult {
+   const start = toDate(req.date, req.startTime);
+   const end = toDate(req.date, req.endTime);
+@@ -49,8 +50,7 @@ export function checkAvailability(
+     return { available: false, reason: 'invalid', message: 'End time must be after start time.' };
+   }
+ 
+-  const today = new Date().toISOString().slice(0, 10);
+-  if (req.date < today) {
++  if (start < now) {
+     return { available: false, reason: 'past', message: 'You cannot book a time in the past.' };
+   }
+ 
